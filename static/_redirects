@@ -53,6 +53,11 @@
 /lunch-roulette        https://dajam.seolcoding.com/random-picker 301
 /ladder-game           https://dajam.seolcoding.com/random-picker 301
 
+# 프롬프트 튜토리얼은 아직 홈페이지(www.seolcoding.com)에 있다. AI 프록시가 seolcoding.com에서 온 요청만 받기 때문이다.
+# 여기로 잘못 들어온 링크는 홈페이지로 보낸다. 프록시가 이 사이트를 허용해 튜토리얼을 옮겨 오면 이 두 줄을 지운다(그래서 302).
+/mini-apps/prompt-tutorial    https://www.seolcoding.com/mini-apps/prompt-tutorial/ 302
+/mini-apps/prompt-tutorial/*  https://www.seolcoding.com/mini-apps/prompt-tutorial/:splat 302
+
 # 위 주소의 아래 경로들
 /apps/*                https://dajam.seolcoding.com/apps/:splat 301
 /pricing/*             https://dajam.seolcoding.com/pricing/:splat 301
@@ -109,11 +114,6 @@
 /mini-apps/salary-calculator/*       https://dajam.seolcoding.com/salary-calculator 301
 /mini-apps/student-network/*         https://dajam.seolcoding.com/student-network 301
 /mini-apps/team-divider/*            https://dajam.seolcoding.com/team-divider 301
-
-# 프롬프트 튜토리얼은 아직 홈페이지(www.seolcoding.com)에 있다. AI 프록시가 seolcoding.com에서 온 요청만 받기 때문이다.
-# 여기로 잘못 들어온 링크는 홈페이지로 보낸다. 프록시가 이 사이트를 허용해 튜토리얼을 옮겨 오면 이 두 줄을 지운다(그래서 302).
-/mini-apps/prompt-tutorial    https://www.seolcoding.com/mini-apps/prompt-tutorial/ 302
-/mini-apps/prompt-tutorial/*  https://www.seolcoding.com/mini-apps/prompt-tutorial/:splat 302
 
 # 다잼 서버 주소(결제 알림 등). 308은 POST를 그대로 넘긴다
 /api/*                 https://dajam.seolcoding.com/api/:splat 308
