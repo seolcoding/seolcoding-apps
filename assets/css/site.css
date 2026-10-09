@@ -96,6 +96,24 @@ a:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; border-r
 .row-name a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
 .row-body { max-width: 36em; }
 .row-body p:first-child { font-size: 18px; }
+/* 상태: 이름 옆 작은 글자. 색으로 나누지 않고 글자로 알린다(Not-Only-Color) */
+.row-status {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 8px;
+  border: 1px solid var(--c-line);
+  border-radius: var(--rounded-sm);
+  font-family: var(--f-body);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0;
+  color: var(--c-muted);
+  white-space: nowrap;
+  vertical-align: 0.2em;
+}
+.row-note { margin-top: 4px; font-size: 14px; color: var(--c-muted); }
+.group-note { max-width: 36em; margin-top: 8px; font-size: 15px; color: var(--c-muted); }
 .row-host { margin-top: 4px; font-size: 14px; color: var(--c-muted); overflow-wrap: anywhere; }
 
 /* 바닥글 */

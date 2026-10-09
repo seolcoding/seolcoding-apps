@@ -1,8 +1,17 @@
 # 앱 목록. 홈 화면은 이 파일만 읽는다.
-# 앱 더하기: 맞는 묶음의 apps 아래에 name·url·summary 세 줄을 더한다.
+# 앱 더하기: 맞는 묶음의 apps 아래에 name·url·status·summary 네 줄을 더한다.
 #   - name: 화면에 보이는 이름
 #   - url: 외부 주소(https://…) 또는 이 사이트 안 경로(/showcases/…, .html 없이)
+#   - status: 상태. 아래 네 글자 중 하나를 그대로 쓴다(화면에 이름 옆 글자로 보인다).
 #   - summary: 고객 말로 한 문장
+#
+# status 네 가지(글자는 hugo.toml [params.status]와 같아야 한다. 다르면 빌드가 멈춘다)
+#   - 운영 중: 실제로 열어 핵심 기능이 끝까지 되는 것을 확인했다. 운영 중은 실제로 열어 확인한 것만 적는다.
+#   - 체험용 데모: 혼자 눌러 보는 체험·학습용 페이지다. 가입·서버 없이 그 자리에서 끝난다.
+#   - 개발 중: 열리지만 가입·서버 연동 등 일부 기능이 안 되거나 결과가 틀린다. 링크는 걸고 안내 문구를 함께 보인다.
+#   - 운영 중단: 더는 돌지 않는다. 링크를 걸지 않고 이름과 상태만 보인다.
+# 개발 중 안내 문구는 줄마다 보인다. 한 묶음에서 개발 중이 절반을 넘으면 묶음 소개 아래에 한 번만 보이고 줄마다는 글자만 남는다.
+# 마지막 확인: 2026-10-09 (실제로 열어 봄)
 # 묶음 순서와 앱 순서가 화면 순서다. id는 묶음 바로가기 주소(#id)에 쓴다.
 # showHost: false인 묶음은 앱 아래에 주소(호스트)를 찍지 않는다(같은 주소가 반복될 때).
 # 공개하지 않는 것(고객사 작업, 미공개 앱)은 넣지 않는다.
@@ -14,9 +23,11 @@ groups:
     apps:
       - name: 다잼
         url: https://dajam.seolcoding.com/
+        status: 개발 중
         summary: 강의나 모임에서 QR 하나로 모두가 투표·퀴즈·게임에 참여해요.
       - name: MicroAXLab
         url: https://microaxlab.com/
+        status: 운영 중
         summary: 부산 동네 가게를 직접 찾아가 짧은 홍보 영상과 업무 한 가지 개선을 AI로 만들어 드려요.
 
   - id: mini-apps
@@ -26,57 +37,75 @@ groups:
     apps:
       - name: 실시간 투표
         url: https://dajam.seolcoding.com/live-voting
+        status: 개발 중
         summary: QR로 들어와 투표하고 결과를 함께 화면으로 봐요.
       - name: 실시간 퀴즈
         url: https://dajam.seolcoding.com/realtime-quiz
+        status: 개발 중
         summary: 다 같이 동시에 푸는 퀴즈로 분위기를 띄워요.
       - name: 워드클라우드
         url: https://dajam.seolcoding.com/word-cloud
+        status: 개발 중
         summary: 모두가 낸 단어를 한 장의 그림으로 모아 보여 줘요.
       - name: 청중 참여
         url: https://dajam.seolcoding.com/audience-engage
+        status: 개발 중
         summary: 발표 중에 청중의 질문과 반응을 실시간으로 받아요.
       - name: 밸런스 게임
         url: https://dajam.seolcoding.com/balance-game
+        status: 개발 중
         summary: 둘 중 하나를 고르며 자연스럽게 이야기를 나눠요.
       - name: 이상형 월드컵
         url: https://dajam.seolcoding.com/ideal-worldcup
+        status: 개발 중
         summary: 후보를 넣고 토너먼트로 하나를 골라요.
       - name: 빙고 게임
         url: https://dajam.seolcoding.com/bingo-game
+        status: 개발 중
         summary: 나만의 빙고판을 만들어 여럿이 동시에 즐겨요.
       - name: 휴먼 빙고
         url: https://dajam.seolcoding.com/human-bingo
+        status: 개발 중
         summary: 처음 만난 사람들끼리 서로를 찾아다니며 금방 친해져요.
       - name: 성격 테스트
         url: https://dajam.seolcoding.com/personality-test
+        status: 운영 중
         summary: 가볍게 답하고 나와 팀의 성향을 알아봐요.
       - name: 랜덤 뽑기
         url: https://dajam.seolcoding.com/random-picker
+        status: 개발 중
         summary: 발표 순서, 점심 메뉴, 사다리 타기를 공정하게 뽑아요.
       - name: 팀 나누기
         url: https://dajam.seolcoding.com/team-divider
+        status: 개발 중
         summary: 참가자를 고르게 섞어 팀을 나눠요.
       - name: 단체 주문
         url: https://dajam.seolcoding.com/group-order
+        status: 개발 중
         summary: 각자 고른 메뉴를 한 화면에 모아 주문을 쉽게 정리해요.
       - name: 더치페이 정산
         url: https://dajam.seolcoding.com/dutch-pay
+        status: 운영 중
         summary: 모임 비용을 나눠 누가 누구에게 얼마 보낼지 알려 줘요.
       - name: 연봉 실수령액 계산기
         url: https://dajam.seolcoding.com/salary-calculator
+        status: 개발 중
         summary: 연봉을 넣으면 세금과 4대보험을 뺀 한 달 실수령액을 알려 줘요.
       - name: 전월세 계산기
         url: https://dajam.seolcoding.com/rent-calculator
+        status: 운영 중
         summary: 전세와 월세 중 어느 쪽이 유리한지 비교해 줘요.
       - name: 학점 계산기
         url: https://dajam.seolcoding.com/gpa-calculator
+        status: 운영 중
         summary: 과목과 성적을 넣으면 평균 학점을 계산해요.
       - name: 학생 관계 지도
         url: https://dajam.seolcoding.com/student-network
+        status: 개발 중
         summary: 반 친구들 사이의 관계를 그림으로 보여 줘 선생님이 반을 살피기 쉬워요.
       - name: 프롬프트 엔지니어링 튜토리얼
-        url: /mini-apps/prompt-tutorial/
+        url: https://www.seolcoding.com/mini-apps/prompt-tutorial/
+        status: 체험용 데모
         summary: AI에게 원하는 답을 받는 질문법을 한국어로 직접 따라 하며 배워요. Anthropic 공식 코스를 한국어 실습판으로 옮겼어요.
 
   - id: showcases
@@ -85,21 +114,27 @@ groups:
     apps:
       - name: CES 2026 퀴즈
         url: /showcases/ces-quiz
+        status: 체험용 데모
         summary: CES 2026 소식을 퀴즈로 풀며 한눈에 정리해요.
       - name: CES 2026 핫 키워드 배틀
         url: /showcases/ces-keyword-battle
+        status: 체험용 데모
         summary: 올해 CES에서 가장 뜨거운 키워드를 맞대결로 골라 봐요.
       - name: CES 2026 키워드 맵
         url: /showcases/ces-keyword-map
+        status: 체험용 데모
         summary: CES 2026 키워드가 서로 어떻게 이어지는지 지도로 봐요.
       - name: CES 2026 밈 카드
         url: /showcases/ces-meme-cards
+        status: 체험용 데모
         summary: 딱딱한 기술 뉴스를 웃긴 밈 카드로 가볍게 읽어요.
       - name: CES 2026 한국기업 뉴스 대결
         url: /showcases/ces-corporate-battle
+        status: 체험용 데모
         summary: CES에서 어느 한국 기업이 가장 많이 화제가 됐는지 비교해요.
       - name: 2026 신년 뉴스 핫이슈 TOP 10
         url: /showcases/2026-hot-issues
+        status: 체험용 데모
         summary: 2026년 새해 가장 많이 다뤄진 뉴스 10개를 한 번에 훑어요.
 
   - id: tools
@@ -108,16 +143,21 @@ groups:
     apps:
       - name: 한국 통계 MCP
         url: https://github.com/seolcoding/korean-stat-mcp
+        status: 개발 중
         summary: Claude 같은 AI에게 물어보면 국가통계포털 통계를 찾아 줘요.
       - name: BigKinds MCP
         url: https://pypi.org/project/bigkinds-mcp/
+        status: 개발 중
         summary: AI에게 말로 물어 한국 뉴스 기사를 검색하고 분석해요.
       - name: trendkit
         url: https://github.com/seolcoding/trendkit
+        status: 운영 중
         summary: AI가 구글 트렌드를 적은 비용으로 빠르게 조회하게 해 줘요.
       - name: claude-plugin-paper
         url: https://github.com/seolcoding/claude-plugin-paper
+        status: 개발 중
         summary: Claude Code와 나눈 대화와 마크다운 문서를 인쇄하기 좋은 모양으로 뽑아 줘요.
       - name: Privacy Eraser
         url: https://github.com/seolcoding/Privacy-Eraser/releases
+        status: 운영 중
         summary: PC 브라우저의 방문 기록과 쿠키를 버튼 하나로 지워요. 윈도우 프로그램이에요.

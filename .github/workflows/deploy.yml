@@ -1,4 +1,4 @@
-# main에 push하면 프롬프트 튜토리얼과 Hugo를 빌드해 Cloudflare Pages(seolcoding-apps)에 올린다
+# main에 push하면 Hugo로 빌드해 Cloudflare Pages(seolcoding-apps)에 올린다
 name: Deploy apps to Cloudflare Pages
 
 on:
@@ -28,26 +28,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-
-      - name: Build Prompt Tutorial
-        run: |
-          cd apps/prompt-tutorial
-          bun install --frozen-lockfile
-          bun run build
-          # 저장소에 든 옛 빌드본을 비우고 새 빌드로 바꾼다(옛 해시 파일이 쌓여 배포되지 않게)
-          mkdir -p ../../static/mini-apps/prompt-tutorial
-          find ../../static/mini-apps/prompt-tutorial -mindepth 1 -delete
-          cp -r dist/. ../../static/mini-apps/prompt-tutorial/
-
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
         run: hugo --gc --minify
 
       - name: Check for API keys
-        # 올라갈 파일 전체(public/)에 API 키가 있으면 멈춘다(VITE_* 값은 브라우저 코드에 그대로 박힌다)
+        # 올라갈 파일 전체(public/)에 API 키가 있으면 멈춘다(빌드한 JS에 키가 박히는 사고를 막는다)
         run: |
           if grep -rEq 'sk-(or-v1-|ant-)?[A-Za-z0-9_-]{20,}' public; then echo "✖ API 키가 배포 파일에 들어감 | VITE_ 환경 변수나 커밋된 빌드본 | 키를 빼고 다시 빌드"; exit 1; fi
 

@@ -14,20 +14,34 @@
   </nav>
 </section>
 
+{{- /* 상태 글자는 hugo.toml [params.status]에 있다. 모르는 글자면 빌드를 멈춘다 */}}
+{{- $st := site.Params.status }}
+{{- $known := slice $st.live $st.demo $st.dev $st.stopped }}
 {{ range site.Data.apps.groups }}
+{{- $group := . }}
+{{- range .apps }}{{ if not (in $known .status) }}{{ errorf "data/apps.yaml: %q의 status %q는 hugo.toml [params.status]에 없다" .name .status }}{{ end }}{{ end }}
+{{- /* 개발 중이 절반을 넘는 묶음은 안내를 소개 아래에 한 번만 보인다 */}}
+{{- $devCount := len (where .apps "status" $st.dev) }}
+{{- $groupNotice := gt (mul $devCount 2) (len .apps) }}
 <section class="group wrap" id="{{ .id }}" aria-labelledby="{{ .id }}-title">
   <h2 id="{{ .id }}-title">{{ .name }}</h2>
   {{ with .intro }}<p class="group-intro">{{ . }}</p>{{ end }}
+  {{ if $groupNotice }}<p class="group-note">{{ $st.devNotice }}</p>{{ end }}
   {{- /* showHost: false인 묶음은 주소 줄을 찍지 않는다 */}}
-  {{- $showHost := ne .showHost false }}
+  {{- $showHost := ne $group.showHost false }}
   <ul class="rows">
     {{- range .apps }}
     {{- $u := urls.Parse .url }}
+    {{- $stopped := eq .status $st.stopped }}
     <li class="row">
-      <h3 class="row-name"><a href="{{ .url }}">{{ .name }}</a></h3>
+      <h3 class="row-name">
+        {{- if $stopped }}<span>{{ .name }}</span>{{ else }}<a href="{{ .url }}">{{ .name }}</a>{{ end }}
+        {{- " " }}<span class="row-status">{{ .status }}</span>
+      </h3>
       <div class="row-body">
         <p>{{ .summary }}</p>
-        {{- if $showHost }}{{ with $u.Host }}<p class="row-host">{{ . }}</p>{{ end }}{{ end }}
+        {{- if and (eq .status $st.dev) (not $groupNotice) }}<p class="row-note">{{ $st.devNotice }}</p>{{ end }}
+        {{- if and $showHost (not $stopped) }}{{ with $u.Host }}<p class="row-host">{{ . }}</p>{{ end }}{{ end }}
       </div>
     </li>
     {{- end }}

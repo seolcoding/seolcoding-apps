@@ -20,6 +20,15 @@ disableKinds = ["taxonomy", "term", "section", "rss"]
   # 다잼 참여 코드(/?code=…)로 들어오면 다잼으로 넘긴다(옛 apps 주소의 QR·공유 링크)
   dajamURL = "https://dajam.seolcoding.com/"
 
+  # 앱 상태 글자(data/apps.yaml의 status와 같은 글자). 뜻은 data/apps.yaml 머리말에 있다.
+  # 운영 중단은 링크를 걸지 않는다. 개발 중은 링크를 걸고 devNotice를 함께 보인다.
+  [params.status]
+    live = "운영 중"
+    demo = "체험용 데모"
+    dev = "개발 중"
+    stopped = "운영 중단"
+    devNotice = "개발 중 — 가입·일부 기능이 안 될 수 있습니다"
+
   # 머리말·바닥글 링크
   [[params.links]]
     name = "홈페이지"
