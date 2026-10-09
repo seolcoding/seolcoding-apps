@@ -1,0 +1,118 @@
+/* 앱 사이트 배치. 색·글꼴·형광펜은 static/seolcoding/(디자인 시스템 복사본)이 정한다.
+   여기서는 --c-* 변수만 쓰고 색 코드를 직접 쓰지 않는다(DESIGN.md: 선과 여백, 상자·그림자 없음). */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-body);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  transition: background-color 200ms, color 200ms;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  color: var(--c-ink);
+  font-family: var(--f-head);
+  font-weight: var(--w-head);
+  text-wrap: balance;
+}
+p { margin: 0; }
+
+a { color: var(--c-ink); text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; border-radius: var(--rounded-sm); }
+
+/* 본문 폭 최대 1200px, 좌우 여백 16→48px */
+.wrap {
+  width: 100%;
+  max-width: calc(1200px + 2 * clamp(16px, 4vw, 48px));
+  margin: 0 auto;
+  padding-left: clamp(16px, 4vw, 48px);
+  padding-right: clamp(16px, 4vw, 48px);
+}
+
+/* 머리말: 높이 76px, 왼쪽 로고, 오른쪽 링크 */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 76px;
+}
+.logo { display: inline-flex; flex: none; }
+.logo img { width: clamp(148px, 30vw, 214px); height: auto; }
+.site-links { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.site-links a { font-size: 15px; font-weight: 600; }
+
+/* 첫 화면 */
+.hero { padding-top: clamp(40px, 10vh, 112px); padding-bottom: clamp(40px, 6vw, 72px); }
+.hero h1 {
+  max-width: 11.5em;
+  font-size: clamp(36px, 7vw, 72px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.hero h1 .sc-pen { animation-delay: 250ms; }
+.lead {
+  max-width: 34em;
+  margin-top: 28px;
+  font-size: clamp(18px, 2vw, 20.8px);
+  line-height: 1.65;
+}
+.jump { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 40px; }
+.jump a { font-weight: 600; }
+.text-link { font-weight: 600; }
+.hero .text-link { display: inline-block; margin-top: 28px; }
+
+/* 묶음: 구역 제목 → 한 문장 → 줄 목록 */
+.group { padding-top: clamp(64px, 10vh, 120px); scroll-margin-top: 16px; }
+.group h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.group-intro { max-width: 36em; margin-top: 16px; font-size: 18px; color: var(--c-muted); }
+
+/* 줄 목록: 1px 선 → 28px → 내용 → 28px. 마지막 줄 아래에도 선 */
+.rows { list-style: none; margin: 36px 0 0; padding: 0; border-bottom: 1px solid var(--c-rule); }
+.row {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) 2fr;
+  gap: 8px 48px;
+  padding: 24px 0;
+  border-top: 1px solid var(--c-rule);
+}
+.row-name { font-size: clamp(20px, 2.2vw, 24px); line-height: 1.35; letter-spacing: -0.02em; }
+.row-name a { text-decoration: none; }
+.row-name a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+.row-body { max-width: 36em; }
+.row-host { margin-top: 4px; font-size: 14px; color: var(--c-muted); overflow-wrap: anywhere; }
+
+/* 바닥글 */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-top: clamp(96px, 14vh, 168px);
+  padding-top: 24px;
+  padding-bottom: 40px;
+  font-size: 14px;
+  color: var(--c-muted);
+}
+.site-footer .site-links a { font-size: 14px; }
+
+/* 좁은 화면(760px 이하): 칸을 한 줄로 쌓는다 */
+@media (max-width: 760px) {
+  .row { grid-template-columns: 1fr; padding: 20px 0; }
+}

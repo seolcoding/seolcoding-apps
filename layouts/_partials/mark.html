@@ -1,0 +1,2 @@
+{{- /* 문구의 [대괄호]를 형광펜(<em>)으로 바꾼다. 나머지 글자는 이스케이프한다 */ -}}
+{{- . | htmlEscape | replaceRE `\[([^\]]+)\]` `<em class="sc-pen">$1</em>` | safeHTML -}}

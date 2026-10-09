@@ -1,0 +1,54 @@
+# main에 push하면 프롬프트 튜토리얼과 Hugo를 빌드해 Cloudflare Pages(seolcoding-apps)에 올린다
+name: Deploy apps to Cloudflare Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.155.3
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Build Prompt Tutorial
+        run: |
+          cd apps/prompt-tutorial
+          bun install --frozen-lockfile
+          bun run build
+          # 빌드 결과에 API 키가 들어가면 멈춘다(VITE_* 값은 브라우저 코드에 그대로 박힌다)
+          if grep -rEq 'sk-(or-v1-)?[A-Za-z0-9_-]{20,}' dist; then echo "✖ API 키가 빌드에 들어감 | VITE_ 환경 변수 | 빌드 환경에서 키를 빼고 다시 빌드"; exit 1; fi
+          mkdir -p ../../static/mini-apps/prompt-tutorial
+          cp -r dist/. ../../static/mini-apps/prompt-tutorial/
+
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+        run: hugo --gc --minify
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy public --project-name=seolcoding-apps --branch=main --commit-dirty=true

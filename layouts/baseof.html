@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode | default "ko-kr" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{- block "redirect" . }}{{ end }}
+  <title>{{ block "title" . }}{{ site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ site.Params.description }}">
+  <meta name="author" content="{{ site.Params.author }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.Title }}">
+  <meta property="og:title" content="{{ site.Title }}">
+  <meta property="og:description" content="{{ site.Params.description }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+  {{- /* 설코딩 디자인 시스템: 토큰·글꼴·밝은/어두운 판(기기 설정을 따른다). @import를 쓰므로 static에서 그대로 불러온다 */}}
+  <link rel="stylesheet" href="{{ "seolcoding/theme-web.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "seolcoding/components.css" | relURL }}">
+  <link rel="preload" href="{{ "seolcoding/fonts/Pretendard-Bold.subset.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+  {{- with resources.Get "css/site.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+  {{- end }}
+</head>
+<body>
+  {{ partial "header.html" . }}
+  <main id="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+</body>
+</html>

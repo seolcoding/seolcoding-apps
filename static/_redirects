@@ -1,0 +1,90 @@
+# Cloudflare Pages 주소 넘기기. 형식: 옛주소 새주소 상태코드
+# 이 사이트 자체 주소(/, /showcases/*, /mini-apps/prompt-tutorial/*)는 넘기지 않는다.
+# 정확한 주소를 먼저, *(나머지 경로)가 붙은 주소를 뒤에 둔다. * 줄은 100개까지다.
+
+# 예전 미니 앱 목록 페이지는 새 홈으로 대신한다
+/mini-apps            /  301
+/mini-apps/           /  301
+/mini-apps/index.html /  301
+
+# apps.seolcoding.com은 예전에 다잼을 보여 줬다. 공유 링크와 QR이 계속 되도록 같은 경로로 다잼에 넘긴다.
+# 참여 코드가 붙은 루트(/?code=…)는 여기서 못 가려서 홈 화면의 스크립트가 넘긴다.
+/apps                  https://dajam.seolcoding.com/apps 301
+/pricing               https://dajam.seolcoding.com/pricing 301
+/templates             https://dajam.seolcoding.com/templates 301
+/login                 https://dajam.seolcoding.com/login 301
+/privacy               https://dajam.seolcoding.com/privacy 301
+/terms                 https://dajam.seolcoding.com/terms 301
+/dashboard             https://dajam.seolcoding.com/dashboard 301
+/admin                 https://dajam.seolcoding.com/admin 301
+/payment               https://dajam.seolcoding.com/payment 301
+/analytics             https://dajam.seolcoding.com/analytics 301
+/auth                  https://dajam.seolcoding.com/auth 301
+/live-voting           https://dajam.seolcoding.com/live-voting 301
+/balance-game          https://dajam.seolcoding.com/balance-game 301
+/ideal-worldcup        https://dajam.seolcoding.com/ideal-worldcup 301
+/bingo-game            https://dajam.seolcoding.com/bingo-game 301
+/realtime-quiz         https://dajam.seolcoding.com/realtime-quiz 301
+/group-order           https://dajam.seolcoding.com/group-order 301
+/word-cloud            https://dajam.seolcoding.com/word-cloud 301
+/audience-engage       https://dajam.seolcoding.com/audience-engage 301
+/human-bingo           https://dajam.seolcoding.com/human-bingo 301
+/personality-test      https://dajam.seolcoding.com/personality-test 301
+/random-picker         https://dajam.seolcoding.com/random-picker 301
+/team-divider          https://dajam.seolcoding.com/team-divider 301
+/dutch-pay             https://dajam.seolcoding.com/dutch-pay 301
+/gpa-calculator        https://dajam.seolcoding.com/gpa-calculator 301
+/rent-calculator       https://dajam.seolcoding.com/rent-calculator 301
+/salary-calculator     https://dajam.seolcoding.com/salary-calculator 301
+/student-network       https://dajam.seolcoding.com/student-network 301
+/id-validator          https://dajam.seolcoding.com/id-validator 301
+/en                    https://dajam.seolcoding.com/en 301
+/ja                    https://dajam.seolcoding.com/ja 301
+/ko                    https://dajam.seolcoding.com/ko 301
+/zh                    https://dajam.seolcoding.com/zh 301
+
+# 합쳐진 옛 이름(다잼에서 500): 초성 퀴즈 → 실시간 퀴즈, 점심 룰렛·사다리 타기 → 랜덤 뽑기
+/chosung-quiz          https://dajam.seolcoding.com/realtime-quiz 301
+/lunch-roulette        https://dajam.seolcoding.com/random-picker 301
+/ladder-game           https://dajam.seolcoding.com/random-picker 301
+
+# 위 주소의 아래 경로들
+/apps/*                https://dajam.seolcoding.com/apps/:splat 301
+/pricing/*             https://dajam.seolcoding.com/pricing/:splat 301
+/templates/*           https://dajam.seolcoding.com/templates/:splat 301
+/login/*               https://dajam.seolcoding.com/login/:splat 301
+/privacy/*             https://dajam.seolcoding.com/privacy/:splat 301
+/terms/*               https://dajam.seolcoding.com/terms/:splat 301
+/dashboard/*           https://dajam.seolcoding.com/dashboard/:splat 301
+/admin/*               https://dajam.seolcoding.com/admin/:splat 301
+/payment/*             https://dajam.seolcoding.com/payment/:splat 301
+/analytics/*           https://dajam.seolcoding.com/analytics/:splat 301
+/auth/*                https://dajam.seolcoding.com/auth/:splat 301
+/live-voting/*         https://dajam.seolcoding.com/live-voting/:splat 301
+/balance-game/*        https://dajam.seolcoding.com/balance-game/:splat 301
+/ideal-worldcup/*      https://dajam.seolcoding.com/ideal-worldcup/:splat 301
+/bingo-game/*          https://dajam.seolcoding.com/bingo-game/:splat 301
+/realtime-quiz/*       https://dajam.seolcoding.com/realtime-quiz/:splat 301
+/group-order/*         https://dajam.seolcoding.com/group-order/:splat 301
+/word-cloud/*          https://dajam.seolcoding.com/word-cloud/:splat 301
+/audience-engage/*     https://dajam.seolcoding.com/audience-engage/:splat 301
+/human-bingo/*         https://dajam.seolcoding.com/human-bingo/:splat 301
+/personality-test/*    https://dajam.seolcoding.com/personality-test/:splat 301
+/random-picker/*       https://dajam.seolcoding.com/random-picker/:splat 301
+/team-divider/*        https://dajam.seolcoding.com/team-divider/:splat 301
+/dutch-pay/*           https://dajam.seolcoding.com/dutch-pay/:splat 301
+/gpa-calculator/*      https://dajam.seolcoding.com/gpa-calculator/:splat 301
+/rent-calculator/*     https://dajam.seolcoding.com/rent-calculator/:splat 301
+/salary-calculator/*   https://dajam.seolcoding.com/salary-calculator/:splat 301
+/student-network/*     https://dajam.seolcoding.com/student-network/:splat 301
+/id-validator/*        https://dajam.seolcoding.com/id-validator/:splat 301
+/en/*                  https://dajam.seolcoding.com/en/:splat 301
+/ja/*                  https://dajam.seolcoding.com/ja/:splat 301
+/ko/*                  https://dajam.seolcoding.com/ko/:splat 301
+/zh/*                  https://dajam.seolcoding.com/zh/:splat 301
+/chosung-quiz/*        https://dajam.seolcoding.com/realtime-quiz 301
+/lunch-roulette/*      https://dajam.seolcoding.com/random-picker 301
+/ladder-game/*         https://dajam.seolcoding.com/random-picker 301
+
+# 다잼 서버 주소(결제 알림 등). 308은 POST를 그대로 넘긴다
+/api/*                 https://dajam.seolcoding.com/api/:splat 308

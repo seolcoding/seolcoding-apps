@@ -1,0 +1,29 @@
+baseURL = "https://apps.seolcoding.com/"
+languageCode = "ko-kr"
+defaultContentLanguage = "ko"
+title = "설코딩 앱"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term", "section", "rss"]
+
+# 문구는 여기(사이트 문구)와 data/apps.yaml(앱 목록)에만 둔다. 템플릿에 문구를 쓰지 않는다.
+# [대괄호]로 감싼 글자는 형광펜이 된다.
+[params]
+  description = "설코딩이 만든 서비스와 작은 앱을 한곳에 모았어요."
+  author = "설동헌"
+  heading = "설코딩이 만든 [앱]을 모았어요"
+  lead = "강의와 모임, 일과 공부에 바로 꺼내 쓸 수 있는 서비스와 작은 도구예요. 눌러서 바로 써 보세요."
+  navLabel = "앱 묶음"
+  footerNote = "설코딩 · 설동헌"
+  notFoundTitle = "찾는 페이지가 없어요"
+  notFoundBody = "주소가 바뀌었거나 없어진 페이지예요. 앱 목록에서 다시 찾아 주세요."
+  notFoundLink = "앱 목록으로 가기"
+  # 다잼 참여 코드(/?code=…)로 들어오면 다잼으로 넘긴다(옛 apps 주소의 QR·공유 링크)
+  dajamURL = "https://dajam.seolcoding.com/"
+
+  # 머리말·바닥글 링크
+  [[params.links]]
+    name = "홈페이지"
+    url = "https://seolcoding.com/"
+  [[params.links]]
+    name = "블로그"
+    url = "https://blog.seolcoding.com/"

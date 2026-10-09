@@ -1,0 +1,9 @@
+public/
+resources/
+node_modules/
+dist/
+.hugo_build.lock
+.DS_Store
+.wrangler/
+.env*
+!.env.example

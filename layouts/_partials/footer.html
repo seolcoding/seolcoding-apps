@@ -1,0 +1,8 @@
+<footer class="site-footer wrap">
+  <p>{{ site.Params.footerNote }}</p>
+  <nav class="site-links">
+    {{- range site.Params.links }}
+    <a href="{{ .url }}">{{ .name }}</a>
+    {{- end }}
+  </nav>
+</footer>

@@ -1,0 +1,11 @@
+<header class="site-header wrap">
+  <a class="logo" href="{{ "/" | relURL }}" aria-label="{{ site.Title }}">
+    <img class="sc-logo-light" src="{{ "seolcoding/logos/L2-horizontal.svg" | relURL }}" alt="{{ site.Title }}" width="638" height="77">
+    <img class="sc-logo-dark" src="{{ "seolcoding/logos/L2-horizontal-dark.svg" | relURL }}" alt="{{ site.Title }}" width="638" height="91">
+  </a>
+  <nav class="site-links" aria-label="{{ site.Title }}">
+    {{- range site.Params.links }}
+    <a href="{{ .url }}">{{ .name }}</a>
+    {{- end }}
+  </nav>
+</header>

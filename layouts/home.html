@@ -1,0 +1,35 @@
+{{ define "redirect" }}
+  {{- /* 옛 apps 주소의 다잼 참여 코드(/?code=…)는 다잼으로 넘긴다 */}}
+  <script>try { if (new URLSearchParams(location.search).has("code")) location.replace({{ site.Params.dajamURL }} + location.search); } catch (e) {}</script>
+{{ end }}
+
+{{ define "main" }}
+<section class="hero wrap">
+  <h1>{{ partial "mark.html" site.Params.heading }}</h1>
+  <p class="lead">{{ site.Params.lead }}</p>
+  <nav class="jump" aria-label="{{ site.Params.navLabel }}">
+    {{- range site.Data.apps.groups }}
+    <a href="#{{ .id }}">{{ .name }}</a>
+    {{- end }}
+  </nav>
+</section>
+
+{{ range site.Data.apps.groups }}
+<section class="group wrap" id="{{ .id }}" aria-labelledby="{{ .id }}-title">
+  <h2 id="{{ .id }}-title">{{ .name }}</h2>
+  {{ with .intro }}<p class="group-intro">{{ . }}</p>{{ end }}
+  <ul class="rows">
+    {{- range .apps }}
+    {{- $u := urls.Parse .url }}
+    <li class="row">
+      <h3 class="row-name"><a href="{{ .url }}">{{ .name }}</a></h3>
+      <div class="row-body">
+        <p>{{ .summary }}</p>
+        {{- with $u.Host }}<p class="row-host">{{ . }}</p>{{ end }}
+      </div>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+{{ end }}
+{{ end }}
