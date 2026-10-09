@@ -23,10 +23,12 @@
 {{- /* 개발 중이 절반을 넘는 묶음은 안내를 소개 아래에 한 번만 보인다 */}}
 {{- $devCount := len (where .apps "status" $st.dev) }}
 {{- $groupNotice := gt (mul $devCount 2) (len .apps) }}
+{{- /* 묶음에 devNotice가 있으면 그 문구를 쓴다(예: 도구는 가입 대신 설치) */}}
+{{- $notice := .devNotice | default $st.devNotice }}
 <section class="group wrap" id="{{ .id }}" aria-labelledby="{{ .id }}-title">
   <h2 id="{{ .id }}-title">{{ .name }}</h2>
   {{ with .intro }}<p class="group-intro">{{ . }}</p>{{ end }}
-  {{ if $groupNotice }}<p class="group-note">{{ $st.devNotice }}</p>{{ end }}
+  {{ if $groupNotice }}<p class="group-note">{{ $notice }}</p>{{ end }}
   {{- /* showHost: false인 묶음은 주소 줄을 찍지 않는다 */}}
   {{- $showHost := ne $group.showHost false }}
   <ul class="rows">
@@ -40,7 +42,7 @@
       </h3>
       <div class="row-body">
         <p>{{ .summary }}</p>
-        {{- if and (eq .status $st.dev) (not $groupNotice) }}<p class="row-note">{{ $st.devNotice }}</p>{{ end }}
+        {{- if and (eq .status $st.dev) (not $groupNotice) }}<p class="row-note">{{ $notice }}</p>{{ end }}
         {{- if and $showHost (not $stopped) }}{{ with $u.Host }}<p class="row-host">{{ . }}</p>{{ end }}{{ end }}
       </div>
     </li>
