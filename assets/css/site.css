@@ -88,13 +88,14 @@ a:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; border-r
   display: grid;
   grid-template-columns: minmax(200px, 1fr) 2fr;
   gap: 8px 48px;
-  padding: 24px 0;
+  padding: 28px 0;
   border-top: 1px solid var(--c-rule);
 }
 .row-name { font-size: clamp(20px, 2.2vw, 24px); line-height: 1.35; letter-spacing: -0.02em; }
 .row-name a { text-decoration: none; }
 .row-name a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
 .row-body { max-width: 36em; }
+.row-body p:first-child { font-size: 18px; }
 .row-host { margin-top: 4px; font-size: 14px; color: var(--c-muted); overflow-wrap: anywhere; }
 
 /* 바닥글 */

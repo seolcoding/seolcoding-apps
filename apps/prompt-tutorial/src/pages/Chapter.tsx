@@ -163,19 +163,19 @@ export function Chapter() {
                 {chapter.examples.map((example, idx) => (
                   <div key={idx} className="p-4 rounded-xl bg-white border border-neutral-200 space-y-4">
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 text-xs font-bold">
+                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">
                         {idx + 1}
                       </span>
                       <h4 className="font-medium text-neutral-900">{example.description}</h4>
                     </div>
                     <div className="space-y-2">
                       {example.systemPrompt && (
-                        <div className="p-3 rounded-lg bg-purple-50 border border-purple-100">
+                        <div className="p-3 rounded-lg bg-amber-50 border border-amber-100">
                           <div className="flex items-center justify-between mb-1">
-                            <p className="text-xs font-medium text-purple-700">System:</p>
+                            <p className="text-xs font-medium text-amber-800">System:</p>
                             <CopyButton text={example.systemPrompt} />
                           </div>
-                          <p className="text-sm font-mono text-purple-900 whitespace-pre-wrap">{example.systemPrompt}</p>
+                          <p className="text-sm font-mono text-amber-900 whitespace-pre-wrap">{example.systemPrompt}</p>
                         </div>
                       )}
                       <div className="p-3 rounded-lg bg-blue-50 border border-blue-100">

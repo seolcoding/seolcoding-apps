@@ -114,7 +114,7 @@ export function PromptEditor({
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <label className="flex items-center gap-2 text-sm font-medium text-neutral-700">
-            <span className="inline-flex items-center justify-center w-5 h-5 rounded bg-purple-100 text-purple-700 text-xs font-bold">
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded bg-amber-100 text-amber-800 text-xs font-bold">
               S
             </span>
             System Prompt
@@ -131,7 +131,7 @@ export function PromptEditor({
             value={localSystemPrompt}
             onChange={(e) => handleSystemChange(e.target.value)}
             placeholder="시스템 프롬프트를 입력하세요..."
-            className="w-full px-3 py-2 rounded-lg border-2 border-purple-300 bg-purple-50 text-neutral-900 text-sm font-mono resize-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all focus:outline-none"
+            className="w-full px-3 py-2 rounded-lg border-2 border-amber-300 bg-amber-50 text-neutral-900 text-sm font-mono resize-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all focus:outline-none"
             rows={2}
           />
         ) : (

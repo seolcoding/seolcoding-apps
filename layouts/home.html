@@ -18,6 +18,8 @@
 <section class="group wrap" id="{{ .id }}" aria-labelledby="{{ .id }}-title">
   <h2 id="{{ .id }}-title">{{ .name }}</h2>
   {{ with .intro }}<p class="group-intro">{{ . }}</p>{{ end }}
+  {{- /* showHost: false인 묶음은 주소 줄을 찍지 않는다 */}}
+  {{- $showHost := ne .showHost false }}
   <ul class="rows">
     {{- range .apps }}
     {{- $u := urls.Parse .url }}
@@ -25,7 +27,7 @@
       <h3 class="row-name"><a href="{{ .url }}">{{ .name }}</a></h3>
       <div class="row-body">
         <p>{{ .summary }}</p>
-        {{- with $u.Host }}<p class="row-host">{{ . }}</p>{{ end }}
+        {{- if $showHost }}{{ with $u.Host }}<p class="row-host">{{ . }}</p>{{ end }}{{ end }}
       </div>
     </li>
     {{- end }}

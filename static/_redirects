@@ -1,11 +1,16 @@
 # Cloudflare Pages 주소 넘기기. 형식: 옛주소 새주소 상태코드
-# 이 사이트 자체 주소(/, /showcases/*, /mini-apps/prompt-tutorial/*)는 넘기지 않는다.
+# 이 사이트 자체 주소(/, /showcases/<이름>, /mini-apps/prompt-tutorial/*)는 넘기지 않는다.
 # 정확한 주소를 먼저, *(나머지 경로)가 붙은 주소를 뒤에 둔다. * 줄은 100개까지다.
 
 # 예전 미니 앱 목록 페이지는 새 홈으로 대신한다
 /mini-apps            /  301
 /mini-apps/           /  301
 /mini-apps/index.html /  301
+
+# 예전 쇼케이스 목록 페이지도 새 홈의 쇼케이스 묶음으로 대신한다
+/showcases            /#showcases  301
+/showcases/           /#showcases  301
+/showcases/index.html /#showcases  301
 
 # apps.seolcoding.com은 예전에 다잼을 보여 줬다. 공유 링크와 QR이 계속 되도록 같은 경로로 다잼에 넘긴다.
 # 참여 코드가 붙은 루트(/?code=…)는 여기서 못 가려서 홈 화면의 스크립트가 넘긴다.
@@ -85,6 +90,25 @@
 /chosung-quiz/*        https://dajam.seolcoding.com/realtime-quiz 301
 /lunch-roulette/*      https://dajam.seolcoding.com/random-picker 301
 /ladder-game/*         https://dajam.seolcoding.com/random-picker 301
+
+# 홈페이지의 옛 미니 앱 주소(seolcoding.com/mini-apps/<이름>/)가 이리로 넘어오면 다잼의 같은 앱으로 보낸다
+# 합쳐진 옛 이름은 위와 같이 바꾼다(초성 퀴즈 → 실시간 퀴즈, 점심 룰렛·사다리 타기 → 랜덤 뽑기)
+/mini-apps/balance-game/*            https://dajam.seolcoding.com/balance-game 301
+/mini-apps/bingo-game/*              https://dajam.seolcoding.com/bingo-game 301
+/mini-apps/chosung-quiz/*            https://dajam.seolcoding.com/realtime-quiz 301
+/mini-apps/dutch-pay/*               https://dajam.seolcoding.com/dutch-pay 301
+/mini-apps/gpa-calculator/*          https://dajam.seolcoding.com/gpa-calculator 301
+/mini-apps/group-order/*             https://dajam.seolcoding.com/group-order 301
+/mini-apps/id-validator/*            https://dajam.seolcoding.com/id-validator 301
+/mini-apps/ideal-worldcup/*          https://dajam.seolcoding.com/ideal-worldcup 301
+/mini-apps/ladder-game/*             https://dajam.seolcoding.com/random-picker 301
+/mini-apps/live-voting/*             https://dajam.seolcoding.com/live-voting 301
+/mini-apps/lunch-roulette/*          https://dajam.seolcoding.com/random-picker 301
+/mini-apps/random-picker/*           https://dajam.seolcoding.com/random-picker 301
+/mini-apps/rent-calculator/*         https://dajam.seolcoding.com/rent-calculator 301
+/mini-apps/salary-calculator/*       https://dajam.seolcoding.com/salary-calculator 301
+/mini-apps/student-network/*         https://dajam.seolcoding.com/student-network 301
+/mini-apps/team-divider/*            https://dajam.seolcoding.com/team-divider 301
 
 # 다잼 서버 주소(결제 알림 등). 308은 POST를 그대로 넘긴다
 /api/*                 https://dajam.seolcoding.com/api/:splat 308

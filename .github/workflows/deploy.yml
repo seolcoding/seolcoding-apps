@@ -36,15 +36,20 @@ jobs:
           cd apps/prompt-tutorial
           bun install --frozen-lockfile
           bun run build
-          # 빌드 결과에 API 키가 들어가면 멈춘다(VITE_* 값은 브라우저 코드에 그대로 박힌다)
-          if grep -rEq 'sk-(or-v1-)?[A-Za-z0-9_-]{20,}' dist; then echo "✖ API 키가 빌드에 들어감 | VITE_ 환경 변수 | 빌드 환경에서 키를 빼고 다시 빌드"; exit 1; fi
+          # 저장소에 든 옛 빌드본을 비우고 새 빌드로 바꾼다(옛 해시 파일이 쌓여 배포되지 않게)
           mkdir -p ../../static/mini-apps/prompt-tutorial
+          find ../../static/mini-apps/prompt-tutorial -mindepth 1 -delete
           cp -r dist/. ../../static/mini-apps/prompt-tutorial/
 
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
         run: hugo --gc --minify
+
+      - name: Check for API keys
+        # 올라갈 파일 전체(public/)에 API 키가 있으면 멈춘다(VITE_* 값은 브라우저 코드에 그대로 박힌다)
+        run: |
+          if grep -rEq 'sk-(or-v1-|ant-)?[A-Za-z0-9_-]{20,}' public; then echo "✖ API 키가 배포 파일에 들어감 | VITE_ 환경 변수나 커밋된 빌드본 | 키를 빼고 다시 빌드"; exit 1; fi
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3

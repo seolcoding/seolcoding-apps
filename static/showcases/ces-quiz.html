@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎯 CES 2026 퀴즈</title>
+    <title>CES 2026 퀴즈</title>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,7 +39,7 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: 
                 radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%);
+                radial-gradient(circle at 80% 20%, rgba(255, 182, 101, 0.15) 0%, transparent 40%);
             pointer-events: none;
         }
         .content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
@@ -51,7 +51,7 @@
         
         .quiz-badge {
             display: inline-block;
-            background: linear-gradient(90deg, #ec4899, #8b5cf6);
+            background: linear-gradient(90deg, #ec4899, #ffb665);
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 11px;
@@ -112,21 +112,21 @@
         }
         
         .answer-reveal {
-            background: rgba(139, 92, 246, 0.15);
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            background: rgba(255, 182, 101, 0.15);
+            border: 1px solid rgba(255, 182, 101, 0.3);
             border-radius: 14px;
             padding: 15px;
             margin-top: 15px;
             display: none;
         }
         .answer-reveal.show { display: block; animation: fadeIn 0.4s ease; }
-        .answer-title { font-weight: 800; color: #a78bfa; margin-bottom: 6px; font-size: 14px; }
+        .answer-title { font-weight: 800; color: #ffb665; margin-bottom: 6px; font-size: 14px; }
         .answer-text { font-size: 13px; color: #ccc; line-height: 1.5; }
         .answer-text strong { color: #f472b6; }
         
         .next-btn {
             display: none;
-            background: linear-gradient(90deg, #ec4899, #8b5cf6);
+            background: linear-gradient(90deg, #ec4899, #ffb665);
             border: none;
             border-radius: 14px;
             padding: 14px;
@@ -151,7 +151,7 @@
         .result-score {
             font-family: 'Black Han Sans', sans-serif;
             font-size: 64px;
-            background: linear-gradient(90deg, #f472b6, #a78bfa);
+            background: linear-gradient(90deg, #f472b6, #ffb665);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
