@@ -1,6 +1,6 @@
 # AGENTS.md
 
-설코딩 앱 모음(`apps.seolcoding.com`) 원본이다. 정본 규칙은 `~/900_System/AGENTS.md`, 관련 저장소 관계는 `~/100_Dev/seolcoding-agent-os/AGENTS.md`를 따른다.
+설코딩 앱 모음(`apps.seolcoding.com`) 원본이다. 정본 규칙은 `~/900_System/AGENTS.md`, 관련 저장소 관계는 agent-os 저장소(`seolcoding/seolcoding-agent-os`)의 `AGENTS.md`를 따른다. 홈페이지·블로그는 저장소 `seolcoding/seolcoding.com`이다.
 
 ## 만드는 법
 
